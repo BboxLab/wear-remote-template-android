@@ -1,1 +1,1 @@
-include ':mobile', ':wear', ':secondscreen-library', ':com_example_google_tv_anymotelibrary'
+include ':mobile', ':wear', ':com_example_google_tv_anymotelibrary'
