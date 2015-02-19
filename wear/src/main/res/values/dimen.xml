@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="channelIcon">24dp</dimen>
+    <dimen name="channelIconLeftMargin">5dp</dimen>
+    <dimen name="title">20sp</dimen>
+    <dimen name="text">16sp</dimen>
+</resources>

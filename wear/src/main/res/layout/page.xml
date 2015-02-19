@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.WatchViewStub
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/watch_view_stub"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:rectLayout="@layout/page_rect"
+    app:roundLayout="@layout/page_rect">
+    <!--On pourrait mettre app:roundLayout="@layout/page_round" mais a priori c'est bon avec le meme layout pour tout le monde.-->
+</android.support.wearable.view.WatchViewStub>

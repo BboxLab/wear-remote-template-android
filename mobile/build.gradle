@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "21.1.2"
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+    }
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 20
+        versionCode 9
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    wearApp project(':wear')
+    compile 'com.google.android.gms:play-services-wearable:+'
+    compile 'com.android.support:appcompat-v7:20.+'
+    compile 'com.loopj.android:android-async-http:1.4.4'
+    compile 'org.java-websocket:Java-WebSocket:1.+'
+    compile 'javax.jmdns:jmdns:3.+'
+    compile project(':com_example_google_tv_anymotelibrary')
+    compile files('libs/classes.jar')
+    compile project(':secondscreen-library')
+}

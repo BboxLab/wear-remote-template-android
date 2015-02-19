@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/remote2">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/up"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="UP"
+            android:textColor="@color/hidden_buttons"
+            android:background="@color/hidden_buttons" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:weightSum="4">
+
+            <Button
+                android:id="@+id/left"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="LEFT"
+                android:textColor="@color/hidden_buttons"
+                android:background="@color/hidden_buttons" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:weightSum="2"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ok"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="OK"
+                    android:layout_weight="1"
+                    android:textColor="@color/hidden_buttons"
+                    android:background="@color/hidden_buttons"/>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:text="back"
+                        android:textColor="@color/hidden_buttons"
+                        android:background="@color/hidden_buttons" />
+
+
+                    <Button
+                        android:id="@+id/home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:text="home"
+                        android:textColor="@color/hidden_buttons"
+                        android:background="@color/hidden_buttons" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            <Button
+                android:id="@+id/right"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="RIGHT"
+                android:textColor="@color/hidden_buttons"
+                android:background="@color/hidden_buttons" />
+
+        </LinearLayout>
+
+            <Button
+                android:id="@+id/down"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DOWN"
+                android:textColor="@color/hidden_buttons"
+                android:background="@color/hidden_buttons" />
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/splashscreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/ic_launcher" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

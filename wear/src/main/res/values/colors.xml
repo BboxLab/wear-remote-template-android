@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="action_button">#0065a6</color>
+    <color name="action_button_pressed">#2955C5</color>
+    <color name="black_overlay">#80000000</color>
+    <color name="title">#a2a2a2</color>
+    <color name="text">#434343</color>
+    <color name="hidden_buttons">#00000000</color>
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MiamiWear</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">Remote</string>
+    <string name="title_section2">Applications</string>
+    <string name="title_section3">Settings</string>
+    <string name="title_section4">Notification</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_wakeonlan">Wake on LAN</string>
+
+    <!-- BboxAPI security -->
+    <string name="appId">your_appId</string> <!-- TODO: replace with your appId -->
+    <string name="appSecret">your_appSecret</string> <!-- TODO: replace with your appSecret -->
+
+</resources>
