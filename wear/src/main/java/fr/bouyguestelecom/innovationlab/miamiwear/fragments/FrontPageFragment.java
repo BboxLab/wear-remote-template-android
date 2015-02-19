@@ -55,10 +55,16 @@ public class FrontPageFragment extends CardFragment implements WatchViewStub.OnL
             ((ProgressBar) mRootView.findViewById(R.id.progressbar)).setProgress(Tools.computeProgress(mStartTime, mEndTime));
         } else { // Fonctionnement normal
             //View root = inflater.inflate(R.layout.page, container, false);
-            mRootView = (ViewGroup) inflater.inflate(R.layout.page, container, false);
+            //---mRootView = (ViewGroup) inflater.inflate(R.layout.page, container, false);
 
             //((WatchViewStub) root.findViewById(R.id.watch_view_stub)).setOnLayoutInflatedListener(this);
-            ((WatchViewStub) mRootView.findViewById(R.id.watch_view_stub)).setOnLayoutInflatedListener(this);
+            //---((WatchViewStub) mRootView.findViewById(R.id.watch_view_stub)).setOnLayoutInflatedListener(this);
+
+            mRootView = (ViewGroup) inflater.inflate(R.layout.page_rect, container, false);
+            ((TextView) mRootView.findViewById(R.id.title)).setText(mTitle);
+            ((TextView) mRootView.findViewById(R.id.text)).setText(Tools.EPGTimeToString(mStartTime));
+            if (icon > 0) ((ImageView) mRootView.findViewById(R.id.logo)).setImageResource(icon);
+            ((ProgressBar) mRootView.findViewById(R.id.progressbar)).setProgress(Tools.computeProgress(mStartTime, mEndTime));
 
             //return root;
         }
