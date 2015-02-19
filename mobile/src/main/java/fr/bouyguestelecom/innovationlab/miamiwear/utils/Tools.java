@@ -51,10 +51,10 @@ public class Tools {
     public static void zapTo(final int channel) throws InterruptedException {
         Log.d(TAG, "zapTo " + channel);
 
-        if (channel>9) zapTo(channel/10);
-        if (channel%11 == 0) Thread.sleep(600);
+        if (channel > 9) zapTo(channel / 10);
+        if (channel % 11 == 0) Thread.sleep(600);
         if (TV.isConnectedToMiami()) {
-            switch (channel%10) {
+            switch (channel % 10) {
                 case 0:
                     TV.getAnymoteSender().sendKeyPress(Key.Code.KEYCODE_0);
                     break;
@@ -86,13 +86,12 @@ public class Tools {
                     TV.getAnymoteSender().sendKeyPress(Key.Code.KEYCODE_9);
                     break;
             }
-        }
-        else Log.e(TAG,"not connected to Miami");
+        } else Log.e(TAG, "not connected to Miami");
     }
 
     public static int updateChannel(Context context, int channel) {
         SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(context);
-        if (preference.getBoolean("fluxTNT",false)) return channel;
+        if (preference.getBoolean("fluxTNT", false)) return channel;
         switch (channel) {
             case 15:
                 return 153;//BFM (jai mis business à la place)

@@ -10,7 +10,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Switch;
 
-import miamiwear.giom.ilab.com.miamiwear.R;
+import fr.bouyguestelecom.innovationlab.miamiwear.R;
 import fr.bouyguestelecom.innovationlab.miamiwear.listeners.PhoneListener;
 import fr.bouyguestelecom.innovationlab.miamiwear.services.MyService;
 

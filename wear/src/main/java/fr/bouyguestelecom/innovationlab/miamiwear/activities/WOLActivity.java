@@ -11,7 +11,7 @@ import android.support.wearable.view.CircledImageView;
 import android.util.Log;
 import android.view.View;
 
-import miamiwear.giom.ilab.com.miamiwear.R;
+import fr.bouyguestelecom.innovationlab.miamiwear.R;
 import fr.bouyguestelecom.innovationlab.miamiwear.services.WOLListener;
 import fr.bouyguestelecom.innovationlab.miamiwear.utils.Constants;
 

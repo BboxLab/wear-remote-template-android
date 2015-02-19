@@ -11,7 +11,7 @@ import android.support.wearable.view.GridViewPager;
 import android.util.Log;
 import android.view.View;
 
-import miamiwear.giom.ilab.com.miamiwear.R;
+import fr.bouyguestelecom.innovationlab.miamiwear.R;
 import fr.bouyguestelecom.innovationlab.miamiwear.adapters.RemoteGridPagerAdapter;
 import fr.bouyguestelecom.innovationlab.miamiwear.services.DataListener;
 import fr.bouyguestelecom.innovationlab.miamiwear.services.RemoteListener;

@@ -1,6 +1,5 @@
 package fr.bouyguestelecom.innovationlab.miamiwear.models;
 
-
 import fr.bouyguestelecom.innovationlab.miamiwear.utils.EPG;
 
 /**

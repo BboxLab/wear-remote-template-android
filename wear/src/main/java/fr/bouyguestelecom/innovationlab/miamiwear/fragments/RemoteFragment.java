@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import miamiwear.giom.ilab.com.miamiwear.R;
+import fr.bouyguestelecom.innovationlab.miamiwear.R;
 import fr.bouyguestelecom.innovationlab.miamiwear.services.RemoteListener;
 import fr.bouyguestelecom.innovationlab.miamiwear.utils.Constants;
 

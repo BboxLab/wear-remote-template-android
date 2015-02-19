@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import miamiwear.giom.ilab.com.miamiwear.R;
+import fr.bouyguestelecom.innovationlab.miamiwear.R;
 
 /**
  * Created by InnovationLab on 20/08/2014 for Miami Wear

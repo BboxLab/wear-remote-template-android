@@ -47,11 +47,11 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.bouyguestelecom.tv.openapi.secondscreen.bbox.WOLPowerManager;
-import miamiwear.giom.ilab.com.miamiwear.R;
+import fr.bouyguestelecom.innovationlab.miamiwear.R;
 import fr.bouyguestelecom.innovationlab.miamiwear.utils.Constants;
 import fr.bouyguestelecom.innovationlab.miamiwear.utils.TV;
 import fr.bouyguestelecom.innovationlab.miamiwear.utils.Tools;
+import fr.bouyguestelecom.tv.openapi.secondscreen.bbox.WOLPowerManager;
 
 /**
  * Created by InnovationLab on 20/08/2014 for Miami Wear

@@ -13,8 +13,8 @@ import android.util.Log;
 import com.example.google.tv.anymotelibrary.client.AnymoteClientService;
 import com.example.google.tv.anymotelibrary.client.AnymoteSender;
 
-import fr.bouyguestelecom.tv.openapi.secondscreen.bbox.WOLPowerManager;
 import fr.bouyguestelecom.innovationlab.miamiwear.utils.TV;
+import fr.bouyguestelecom.tv.openapi.secondscreen.bbox.WOLPowerManager;
 
 /**
  * Created by InnovationLab on 20/08/2014 for Miami Wear

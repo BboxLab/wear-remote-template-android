@@ -14,7 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
-import miamiwear.giom.ilab.com.miamiwear.R;
+import fr.bouyguestelecom.innovationlab.miamiwear.R;
 import fr.bouyguestelecom.innovationlab.miamiwear.adapters.EmptyGridPagerAdapter;
 import fr.bouyguestelecom.innovationlab.miamiwear.adapters.GridPagerAdapter;
 import fr.bouyguestelecom.innovationlab.miamiwear.services.DataListener;

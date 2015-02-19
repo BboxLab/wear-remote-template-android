@@ -11,7 +11,7 @@ import android.util.Log;
 
 import java.util.Random;
 
-import miamiwear.giom.ilab.com.miamiwear.R;
+import fr.bouyguestelecom.innovationlab.miamiwear.R;
 import fr.bouyguestelecom.innovationlab.miamiwear.fragments.ActionFragment;
 import fr.bouyguestelecom.innovationlab.miamiwear.fragments.FrontPageFragment;
 import fr.bouyguestelecom.innovationlab.miamiwear.fragments.SummaryFragment;
