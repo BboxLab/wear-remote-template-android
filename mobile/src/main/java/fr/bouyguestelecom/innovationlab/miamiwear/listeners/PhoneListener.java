@@ -265,6 +265,7 @@ public class PhoneListener extends WearableListenerService
                     httpPost.setEntity(new ByteArrayEntity(jsonObjectToken.toString().getBytes("UTF8")));
 
                     // Execute HTTP Post Request
+                    // adb shell am startservice -a "fr.bouyguestelecom.bboxapi.StartService" --user 0
                     HttpResponse response = httpClient.execute(httpPost);
                     StatusLine statusLine = response.getStatusLine();
                     int statusCode = statusLine.getStatusCode();
