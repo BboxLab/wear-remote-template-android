@@ -1,16 +1,15 @@
 ***ANDROID WEAR REMOTE FOR MIAMI***
 
-Exemple d'application qui permet de contrôler la Bbox Miami depuis sa montre connectée Android Wear grâce aux BboxAPI.
+Sample application that uses BboxAPI to control Bbox Miami with a Smartwatch (Android Wear).
 
-Le projet utilise la librairie Anymote (Google) pour le zapping et la navigation dans l'interface.
-Le projet utilise également la librairie BboxAPI 0.3.1 pour récupérer le guide des programmes en direct.
+Project uses Anymote library (Google) to zap and navigate in the UI.
+Project also uses BboxAPI 0.3.1 library to retrieve the live program guide.
 
-Le module 'mobile' concerne la partie Smartphone :<br/>
-   - connexion en Wi-Fi à la Bbox Miami<br/>
-   - gestion des requêtes vers les API<br/>
-   - communication avec la montre
-	
-Le module 'wear' concerne la partie montre connectée :<br/>
-   - affichage du résultat du guide des programmes (nom de programme, chaîne, résumé, durée, avancement)<br/>
-   - envoi des commandes de zapping ou navigation vers le téléphone
+'mobile' module concerns Smartphone part:<br/>
+   - Wi-Fi connection to Bbox Miami<br/>
+   - request management to the API<br/>
+   - communication with smartwatch
 
+'wear' module concerns Smartwatch:<br/>
+   - display live program guide results (title, channel, progression)<br/>
+   - sending commands to zap or navigate to Smartphone
