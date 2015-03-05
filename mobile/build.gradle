@@ -35,7 +35,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:20.+'
     compile 'com.loopj.android:android-async-http:1.4.4'
     //compile 'org.java-websocket:Java-WebSocket:1.+'
-    compile 'javax.jmdns:jmdns:3.+'
+    //compile 'javax.jmdns:jmdns:3.+'
     compile project(':com_example_google_tv_anymotelibrary')
     //compile files('libs/classes.jar')
 
