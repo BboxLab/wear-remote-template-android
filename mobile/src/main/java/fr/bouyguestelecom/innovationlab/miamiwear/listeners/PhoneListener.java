@@ -21,19 +21,25 @@ import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
 import com.google.anymote.Key;
 
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
+import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,6 +50,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.security.*;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +63,10 @@ import fr.bouyguestelecom.innovationlab.miamiwear.utils.Constants;
 import fr.bouyguestelecom.innovationlab.miamiwear.utils.TV;
 import fr.bouyguestelecom.innovationlab.miamiwear.utils.Tools;
 import fr.bouyguestelecom.tv.openapi.secondscreen.bbox.WOLPowerManager;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 /**
  * Created by InnovationLab on 20/08/2014 for Miami Wear
@@ -176,7 +191,7 @@ public class PhoneListener extends WearableListenerService
             Log.d(TAG, TAG);
 
             // Create a new HttpClient and Post Header
-            HttpClient httpClient = new DefaultHttpClient();
+            HttpClient httpClient = getNewHttpClient();
             //HttpPost httpPost = new HttpPost("https://dev.bouyguestelecom.fr/security/token");
             HttpPost httpPost = new HttpPost(Constants.CLOUD_API + Constants.TOKEN);
 
@@ -254,7 +269,7 @@ public class PhoneListener extends WearableListenerService
         @Override
         protected Boolean doInBackground(Void... params) {
             // Create a new HttpClient and Post Header
-            HttpClient httpClient = new DefaultHttpClient();
+            HttpClient httpClient = getNewHttpClient();
             //HttpPost httpPost = new HttpPost("http://" + ip + ":8080/api.bbox.lan/v0/security/sessionId");
             HttpPost httpPost = new HttpPost(Constants.HTTP + ip + Constants.BOX_API + Constants.SESSION_ID);
 
@@ -305,7 +320,7 @@ public class PhoneListener extends WearableListenerService
         protected Void doInBackground(Void... params) {
             Log.d(TAG, "doInBackgrousendKeyPressnd");
             StringBuilder builder = new StringBuilder();
-            HttpClient client = new DefaultHttpClient();
+            HttpClient client = getNewHttpClient();
             //HttpGet httpGet = new HttpGet("http://openbbox.flex.bouyguesbox.fr:81/v0/media/epg/live");
             HttpGet httpGet = new HttpGet(Constants.FLEX + Constants.EPG_LIVE);
 
@@ -413,7 +428,7 @@ public class PhoneListener extends WearableListenerService
         protected Void doInBackground(String... ip) {
             Log.d(TAG, "doInBackground");
             StringBuilder builder = new StringBuilder();
-            HttpClient client = new DefaultHttpClient();
+            HttpClient client = getNewHttpClient();
             //HttpGet httpGet = new HttpGet("http://" + ip[0] + ":8080/api.bbox.lan/v0/media");
             HttpGet httpGet = new HttpGet(Constants.HTTP + ip[0] + Constants.BOX_API + Constants.MEDIA);
             httpGet.setHeader("x-sessionid", TV.getSessionId());
@@ -460,7 +475,7 @@ public class PhoneListener extends WearableListenerService
         protected Void doInBackground(String... ip) {
             Log.d(TAG, "doInBackground");
             StringBuilder builder = new StringBuilder();
-            HttpClient client = new DefaultHttpClient();
+            HttpClient client = getNewHttpClient();
             //HttpGet httpGet = new HttpGet("http://" + ip[0] + ":8080/api.bbox.lan/v0/media");
             HttpGet httpGet = new HttpGet(Constants.HTTP + ip[0] + Constants.BOX_API + Constants.MEDIA);
             httpGet.setHeader("x-sessionid", TV.getSessionId());
@@ -480,6 +495,62 @@ public class PhoneListener extends WearableListenerService
             }
 
             return null;
+        }
+    }
+
+    public class MySSLSocketFactory extends SSLSocketFactory {
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+
+        public MySSLSocketFactory(KeyStore truststore) throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException, UnrecoverableKeyException {
+            super(truststore);
+
+            TrustManager tm = new X509TrustManager() {
+                public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                }
+
+                public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                }
+
+                public X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+            };
+
+            sslContext.init(null, new TrustManager[] { tm }, null);
+        }
+
+        @Override
+        public Socket createSocket(Socket socket, String host, int port, boolean autoClose) throws IOException, UnknownHostException {
+            return sslContext.getSocketFactory().createSocket(socket, host, port, autoClose);
+        }
+
+        @Override
+        public Socket createSocket() throws IOException {
+            return sslContext.getSocketFactory().createSocket();
+        }
+    }
+
+    public HttpClient getNewHttpClient() {
+        try {
+            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            trustStore.load(null, null);
+
+            MySSLSocketFactory sf = new MySSLSocketFactory(trustStore);
+            sf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+
+            HttpParams params = new BasicHttpParams();
+            HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+            HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
+
+            SchemeRegistry registry = new SchemeRegistry();
+            registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+            registry.register(new Scheme("https", sf, 443));
+
+            ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, registry);
+
+            return new DefaultHttpClient(ccm, params);
+        } catch (Exception e) {
+            return new DefaultHttpClient();
         }
     }
 }
